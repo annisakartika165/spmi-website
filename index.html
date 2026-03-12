@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPMI-PP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins', sans-serif;
+background:white;
+color:#333;
+}
+
+/* HEADER */
+
+header{
+background:black;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.container{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 60px;
+}
+
+.logo-area{
+display:flex;
+align-items:center;
+gap:10px;
+color:white;
+}
+
+.logo-area img{
+width:45px;
+}
+
+/* NAVBAR */
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+font-weight:500;
+position:relative;
+}
+
+nav a::after{
+content:'';
+width:0;
+height:2px;
+background:#ff7a00;
+position:absolute;
+left:0;
+bottom:-5px;
+transition:0.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+/* HERO */
+
+.hero{
+height:90vh;
+background:
+linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+url("images/hero.jpg");
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-size:55px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:18px;
+margin-bottom:25px;
+}
+
+.btn{
+background:#ff7a00;
+color:white;
+padding:12px 25px;
+border-radius:6px;
+text-decoration:none;
+font-weight:500;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#e66800;
+transform:scale(1.05);
+}
+
+/* SECTION */
+
+section{
+padding:80px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+h2{
+color:#ff7a00;
+margin-bottom:20px;
+font-size:30px;
+}
+
+/* STRUKTUR */
+
+.struktur-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+text-align:center;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+/* GALERI */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:10px;
+transition:0.4s;
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+cursor:pointer;
+}
+
+.gallery img:hover{
+transform:scale(1.08);
+}
+
+/* LIGHTBOX FOTO */
+
+.lightbox{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+justify-content:center;
+align-items:center;
+z-index:2000;
+}
+
+.lightbox-img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
+
+.close{
+position:absolute;
+top:30px;
+right:40px;
+font-size:40px;
+color:white;
+cursor:pointer;
+}
+
+/* PENDAFTARAN */
+
+.daftar-section{
+text-align:center;
+}
+
+.daftar-desc{
+max-width:700px;
+margin:auto;
+margin-bottom:40px;
+}
+
+.daftar-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:20px;
+}
+
+.daftar-card{
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+text-align:left;
+}
+
+.daftar-card h3{
+color:#ff7a00;
+margin-bottom:15px;
+}
+
+.daftar-card ul{
+padding-left:18px;
+}
+
+.daftar-card li{
+margin-bottom:8px;
+}
+
+.daftar-btn-area{
+margin-top:40px;
+}
+
+.btn-daftar{
+background:#ff7a00;
+color:white;
+padding:15px 35px;
+text-decoration:none;
+border-radius:8px;
+font-weight:600;
+font-size:16px;
+transition:0.3s;
+}
+
+.btn-daftar:hover{
+background:#e66800;
+transform:scale(1.05);
+}
+
+/* FOOTER */
+
+footer{
+background:black;
+color:white;
+text-align:center;
+padding:30px;
+margin-top:50px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="container">
+
+<div class="logo-area">
+<img src="images/logo.png">
+<h2>SPMI-PP</h2>
+</div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#tentang">Tentang</a>
+<a href="#latar">Latar Belakang</a>
+<a href="#struktur">Struktur</a>
+<a href="#galeri">Galeri</a>
+<a href="#daftar">Daftar Anggota</a>
+<a href="#kontak">Kontak</a>
+</nav>
+
+</div>
+
+</header>
+
+<section class="hero" id="home">
+
+<div>
+
+<h1>PENGURUS PUSAT SERIKAT PEDULI MIGRAN INDONESIA PERISAI PANCASILA</h1>
+
+<p>
+Organisasi yang berfokus pada kepedulian dan perlindungan
+Pekerja Migran Indonesia.
+</p>
+
+<a href="#tentang" class="btn">Pelajari Lebih Lanjut</a>
+
+</div>
+
+</section>
+
+<section id="tentang">
+
+<h2>Tentang Organisasi</h2>
+
+<p>
+SPMI-PP merupakan organisasi yang bergerak dalam bidang sosial
+dan kepedulian terhadap pekerja migran Indonesia. Organisasi ini
+memberikan edukasi serta pendampingan bagi masyarakat yang bekerja
+di luar negeri.
+</p>
+
+</section>
+
+<section id="latar">
+
+<h2>Latar Belakang</h2>
+
+<p>
+Banyak masyarakat Indonesia yang bekerja di luar negeri sebagai
+pekerja migran. Namun sering muncul berbagai tantangan seperti
+perlindungan hukum, keselamatan kerja, serta kesejahteraan keluarga.
+</p>
+
+<p>
+SPMI-PP hadir untuk membantu memberikan edukasi dan advokasi
+agar pekerja migran mendapatkan perlindungan yang lebih baik.
+</p>
+
+</section>
+
+<section id="struktur">
+
+<h2>Struktur Organisasi</h2>
+
+<div class="struktur-grid">
+
+<div class="card">
+<h3>Ketua</h3>
+<p>Nama Ketua</p>
+</div>
+
+<div class="card">
+<h3>Wakil Ketua</h3>
+<p>Nama Wakil</p>
+</div>
+
+<div class="card">
+<h3>Sekretaris</h3>
+<p>Nama Sekretaris</p>
+</div>
+
+<div class="card">
+<h3>Bendahara</h3>
+<p>Nama Bendahara</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="galeri">
+
+<h2>Galeri Kegiatan</h2>
+
+<div class="gallery">
+
+<img src="images/kegiatan1.jpg">
+<img src="images/kegiatan2.jpg">
+<img src="images/kegiatan3.jpg">
+<img src="images/kegiatan4.jpg">
+<img src="images/kegiatan5.jpg">
+<img src="images/kegiatan6.jpg">
+
+</div>
+
+</section>
+
+<section id="daftar" class="daftar-section">
+
+<h2>Pendaftaran Anggota Baru</h2>
+
+<p class="daftar-desc">
+SPMI-PP membuka kesempatan bagi masyarakat yang ingin berkontribusi
+dalam kegiatan sosial serta kepedulian terhadap Pekerja Migran Indonesia.
+</p>
+
+<div class="daftar-grid">
+
+<div class="daftar-card">
+<h3>Manfaat Bergabung</h3>
+<ul>
+<li>Mengikuti kegiatan organisasi</li>
+<li>Mendapat pengalaman organisasi</li>
+<li>Menambah relasi dan jaringan</li>
+<li>Berkontribusi dalam kegiatan sosial</li>
+</ul>
+</div>
+
+<div class="daftar-card">
+<h3>Syarat Anggota</h3>
+<ul>
+<li>Warga Negara Indonesia</li>
+<li>Bersedia mengikuti kegiatan organisasi</li>
+<li>Mengisi formulir pendaftaran</li>
+<li>Mematuhi aturan organisasi</li>
+</ul>
+</div>
+
+</div>
+
+<div class="daftar-btn-area">
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLScxHHiDTyG3jrTj5q8W2eA-ovd-402gzrYmyQfz_LlsKVfkXA/viewform?usp=publish-editor" target="_blank" class="btn-daftar">
+Isi Formulir Pendaftaran
+</a>
+
+</div>
+
+</section>
+
+<section id="kontak">
+
+<h2>Kontak</h2>
+
+<p>Email : spmipp@email.com</p>
+<p>Instagram : @spmi_pp</p>
+<p>Alamat : Indonesia</p>
+
+</section>
+
+<footer>
+
+<p>© 2026 SPMI-PP | Website Organisasi</p>
+
+</footer>
+
+<div id="lightbox" class="lightbox">
+<span class="close">&times;</span>
+<img class="lightbox-img" id="lightbox-img">
+</div>
+
+<script>
+
+const images = document.querySelectorAll(".gallery img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const close = document.querySelector(".close");
+
+images.forEach(img => {
+
+img.addEventListener("click", () => {
+
+lightbox.style.display = "flex";
+lightboxImg.src = img.src;
+
+});
+
+});
+
+close.onclick = () => {
+
+lightbox.style.display = "none";
+
+}
+
+</script>
+
+</body>
+</html>
